@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jeevith L - Resume</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 0;
+            background: #e9edf2;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #20252b;
+        }
+
+        /* A4 PAGE */
+        .resume {
+            width: 210mm;
+            min-height: 297mm;
+            margin: auto;
+            background: #ffffff;
+            padding: 17mm 14mm 12mm 14mm;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ================= HEADER ================= */
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 9px;
+            border-bottom: 2px solid #2c6fbd;
+        }
+
+        .header-text {
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 27px;
+            font-weight: 800;
+            color: #18212b;
+            letter-spacing: -0.5px;
+        }
+
+        .header h1 span {
+            color: #18212b;
+        }
+
+        .header h2 {
+            margin: 4px 0 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #2464ad;
+        }
+
+        .location {
+            margin: 0 0 7px;
+            font-size: 9.5px;
+            color: #444;
+        }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            font-size: 9.5px;
+            color: #444;
+        }
+
+        .contact span,
+        .contact a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .contact span:not(:last-child)::after,
+        .contact a::after {
+            content: "  •  ";
+            margin: 0 5px;
+            color: #777;
+        }
+
+        .contact a:hover {
+            color: #2464ad;
+        }
+
+        /* PROFILE IMAGE */
+
+        .profile {
+            width: 78px;
+            height: 78px;
+            flex-shrink: 0;
+        }
+
+        .profile img {
+            width: 78px;
+            height: 78px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #2c6fbd;
+            padding: 2px;
+        }
+
+        /* ================= SECTIONS ================= */
+
+        section {
+            margin-top: 11px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 7px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            color: #2464ad;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.9px;
+            white-space: nowrap;
+        }
+
+        .section-heading .line {
+            height: 1px;
+            background: #d9dde2;
+            flex: 1;
+        }
+
+        /* ================= SUMMARY ================= */
+
+        .summary {
+            font-size: 10px;
+            line-height: 1.55;
+            text-align: left;
+        }
+
+        /* ================= EDUCATION ================= */
+
+        .education-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .education-left h3 {
+            margin: 0;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #20252b;
+        }
+
+        .education-left p {
+            margin: 3px 0 0;
+            font-size: 9.5px;
+            color: #4f555c;
+        }
+
+        .education-year {
+            text-align: right;
+            font-size: 9.5px;
+            line-height: 1.45;
+            color: #555;
+            white-space: nowrap;
+        }
+
+        .education-year strong {
+            color: #2464ad;
+        }
+
+        /* ================= SKILLS ================= */
+
+        .skills {
+            display: grid;
+            grid-template-columns: 105px 1fr;
+            row-gap: 4px;
+            column-gap: 8px;
+            font-size: 9.5px;
+        }
+
+        .skill-name {
+            font-weight: 700;
+            color: #24292f;
+        }
+
+        .skill-value {
+            color: #3f454b;
+            line-height: 1.35;
+        }
+
+        /* ================= PROJECTS ================= */
+
+        .project {
+            margin-bottom: 10px;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .project-title {
+            margin: 0;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #20252b;
+        }
+
+        .project-subtitle {
+            margin: 2px 0 0;
+            font-size: 9.5px;
+            font-weight: 700;
+            color: #2464ad;
+        }
+
+        .badge {
+            font-size: 8px;
+            font-weight: 700;
+            color: #2464ad;
+            border: 1px solid #9ab9db;
+            border-radius: 10px;
+            padding: 3px 7px;
+            white-space: nowrap;
+        }
+
+        .technology {
+            margin: 4px 0 4px;
+            font-size: 9px;
+            color: #444;
+        }
+
+        .technology strong {
+            color: #20252b;
+        }
+
+        .project ul {
+            margin: 0;
+            padding-left: 15px;
+        }
+
+        .project li {
+            margin-bottom: 2px;
+            font-size: 9.3px;
+            line-height: 1.45;
+            color: #3e444a;
+        }
+
+        /* ================= TWO COLUMN ================= */
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .simple-list {
+            margin: 0;
+            padding-left: 15px;
+        }
+
+        .simple-list li {
+            margin-bottom: 4px;
+            font-size: 9.4px;
+            line-height: 1.4;
+        }
+
+        /* ================= TAGS ================= */
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tag {
+            font-size: 8.5px;
+            padding: 4px 7px;
+            border: 1px solid #ccd2d8;
+            color: #454b51;
+            border-radius: 3px;
+        }
+
+        .small-title {
+            margin: 9px 0 5px;
+            font-size: 9.5px;
+            color: #2464ad;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            margin-top: 12px;
+            padding-top: 7px;
+            border-top: 1px solid #d9dde2;
+            text-align: center;
+            font-size: 8px;
+            color: #777;
+            letter-spacing: 0.4px;
+        }
+
+        /* ================= PRINT ================= */
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .resume {
+                width: 210mm;
+                min-height: 297mm;
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+
+        /* ================= SCREEN RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+            body {
+                padding: 0;
+            }
+
+            .resume {
+                width: 100%;
+                min-height: auto;
+                padding: 25px;
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column-reverse;
+                gap: 12px;
+            }
+
+            .profile {
+                align-self: flex-end;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .education-row {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .education-year {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="resume">
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="header">
+
+            <div class="header-text">
+
+                <h1>JEEVITH L</h1>
+
+                <h2>Aspiring Machine Learning Engineer</h2>
+
+                <p class="location">
+                    Coimbatore, Tamil Nadu, India
+                </p>
+
+                <div class="contact">
+
+                    <span>📧 jeevith13.2007@gmail.com</span>
+
+                    <span>📱 9942351777</span>
+
+                    <a href="https://www.linkedin.com/in/jeevith-l-s-382887373/"
+                       target="_blank">
+                        LinkedIn
+                    </a>
+
+                    <a href="https://github.com/jeevith-LS"> github</a>
+
+                </div>
+
+            </div>
+
+            <div class="profile">
+                <img src="IMG_4449.jpeg" alt="Jeevith L">
+            </div>
+
+        </header>
+
+
+        <!-- ================= PROFESSIONAL SUMMARY ================= -->
+
+        <section>
+
+            <div class="section-heading">
+                <h2>PROFESSIONAL SUMMARY</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="summary">
+
+                Artificial Intelligence and Machine Learning student
+                with hands-on experience in Python, machine learning, web
+                development, computer vision and AI-based projects. Interested
+                in building practical intelligent systems and solving real-world
+                problems using data and machine learning. Seeking opportunities
+                to develop strong industry skills and begin a career as a
+                Machine Learning Engineer.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EDUCATION ================= -->
+
+        <section>
+
+            <div class="section-heading">
+                <h2>EDUCATION</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="education-row">
+
+                <div class="education-left">
+
+                    <h3>
+                        Bachelor of Engineering –
+                        Artificial Intelligence & Machine Learning
+                    </h3>
+
+                    <p>
+                        Rathinam Technical Campus, Coimbatore
+                    </p>
+
+                </div>
+
+                <div class="education-year">
+
+                    2025 – Present<br>
+
+                    <strong>2nd Year</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TECHNICAL SKILLS ================= -->
+
+        <section>
+
+            <div class="section-heading">
+                <h2>TECHNICAL SKILLS</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="skills">
+
+                <div class="skill-name">Programming</div>
+                <div class="skill-value">
+                    Python, Java, C, JavaScript
+                </div>
+
+                <div class="skill-name">Machine Learning & AI</div>
+                <div class="skill-value">
+                    Machine Learning Fundamentals, Computer Vision,
+                    OpenCV, MediaPipe, Model Evaluation
+                </div>
+
+                <div class="skill-name">Data & Libraries</div>
+                <div class="skill-value">
+                    NumPy, Pandas, Matplotlib
+                </div>
+
+                <div class="skill-name">Web Development</div>
+                <div class="skill-value">
+                    HTML, CSS, JavaScript, React.js, Tailwind CSS
+                </div>
+
+                <div class="skill-name">Database & Backend</div>
+                <div class="skill-value">
+                    PostgreSQL, Supabase
+                </div>
+
+                <div class="skill-name">Tools & Platforms</div>
+                <div class="skill-value">
+                    Git, GitHub, VS Code, Antigravity IDE, Vercel
+                </div>
+
+                <div class="skill-name">Core Concepts</div>
+                <div class="skill-value">
+                    Data Structures & Algorithms, OOP, DBMS, SQL,
+                    Problem Solving
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROJECTS ================= -->
+
+        <section>
+
+            <div class="section-heading">
+                <h2>PROJECTS</h2>
+                <div class="line"></div>
+            </div>
+
+
+            <!-- PROJECT 1 -->
+
+            <div class="project">
+
+                <div class="project-header">
+
+                    <div>
+
+                        <h3 class="project-title">
+                            CAPACITY CONNECT — AI-Powered Competency Intelligence Platform
+                        </h3>
+
+                        <p class="project-subtitle">
+                            React.js • JavaScript • Tailwind CSS • Supabase • PostgreSQL • Python
+                        </p>
+
+                    </div>
+
+                    <span class="badge">
+                        AI / ML
+                    </span>
+
+                </div>
+
+                <p class="technology">
+                    <strong>Stack:</strong>
+                    React.js, JavaScript, Tailwind CSS,
+                    Supabase, PostgreSQL, Python
+                </p>
+
+                <ul>
+
+                    <li>
+                        Developed a centralized competency-management
+                        platform for identifying organizational training
+                        needs and monitoring employee competencies.
+                    </li>
+
+                    <li>
+                        Designed AI-driven features including Skill Risk Radar,
+                        Competency Decay Alert, Smart Trainer & Participant
+                        Matching, and Competency Outcome Tracking.
+                    </li>
+
+                    <li>
+                        Implemented trainer matching based on competency,
+                        qualification, experience, availability and feedback.
+                    </li>
+
+                    <li>
+                        Designed an AI assistant to support competency
+                        and training-related queries.
+                    </li>
+
+                    <li>
+                        Proposed competency heatmaps and outcome tracking
+                        for actionable organizational insights.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+
+            <div class="project">
+
+                <div class="project-header">
+
+                    <div>
+
+                        <h3 class="project-title">
+                            Integrated Polar Science Knowledge & Outreach Portal
+                        </h3>
+
+                        <p class="project-subtitle">
+                            Smart India Hackathon 2026 – PS 26063
+                        </p>
+
+                    </div>
+
+                    <span class="badge">
+                        SIH 2026
+                    </span>
+
+                </div>
+
+                <ul>
+
+                    <li>
+                        Designed a centralized platform for organizing and
+                        discovering polar-science reports, datasets,
+                        publications, photographs and videos.
+                    </li>
+
+                    <li>
+                        Proposed AI-powered document summarization to
+                        extract important information from large
+                        scientific resources.
+                    </li>
+
+                    <li>
+                        Designed unified search across different
+                        resource types to simplify knowledge discovery.
+                    </li>
+
+                    <li>
+                        Studied existing NCPOR platforms and identified
+                        gaps in cross-resource discovery and centralized access.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PROJECT 3 -->
+
+            <div class="project">
+
+                <div class="project-header">
+
+                    <div>
+
+                        <h3 class="project-title">
+                            HandCursor — Computer Vision-Based Gesture Controller
+                        </h3>
+
+                        <p class="project-subtitle">
+                            Python • OpenCV • MediaPipe
+                        </p>
+
+                    </div>
+
+                    <span class="badge">
+                        COMPUTER VISION
+                    </span>
+
+                </div>
+
+                <p class="technology">
+                    <strong>Stack:</strong>
+                    Python, OpenCV, MediaPipe
+                </p>
+
+                <ul>
+
+                    <li>
+                        Developed a computer-vision-based system for
+                        controlling mouse interactions using hand gestures.
+                    </li>
+
+                    <li>
+                        Used MediaPipe Hand Landmarker to detect and
+                        track 21 hand landmarks in real time.
+                    </li>
+
+                    <li>
+                        Implemented gesture-based cursor movement,
+                        left-click, drag and additional mouse interactions.
+                    </li>
+
+                    <li>
+                        Optimized the camera pipeline for real-time
+                        hand tracking.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PROJECT 4 -->
+
+            <div class="project">
+
+                <div class="project-header">
+
+                    <div>
+
+                        <h3 class="project-title">
+                            MobileCare — Mobile Shop Complaint Management System
+                        </h3>
+
+                        <p class="project-subtitle">
+                            React.js • TypeScript • Tailwind CSS • Supabase
+                        </p>
+
+                    </div>
+
+                    <span class="badge">
+                        FULL STACK
+                    </span>
+
+                </div>
+
+                <p class="technology">
+                    <strong>Stack:</strong>
+                    React.js, TypeScript, Tailwind CSS, Supabase
+                </p>
+
+                <ul>
+
+                    <li>
+                        Developed a web-based system for managing
+                        mobile-service complaints and repair workflows.
+                    </li>
+
+                    <li>
+                        Designed workflows for complaint registration,
+                        repair tracking, technician handling and resolution.
+                    </li>
+
+                    <li>
+                        Used Supabase/PostgreSQL for backend data
+                        management and structured records.
+                    </li>
+
+                    <li>
+                        Designed dashboards to help shop owners
+                        monitor complaints and repair status.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CERTIFICATIONS & ACTIVITIES ================= -->
+
+        <div class="two-column">
+
+            <section>
+
+                <div class="section-heading">
+                    <h2>CERTIFICATIONS</h2>
+                    <div class="line"></div>
+                </div>
+
+                <ul class="simple-list">
+
+                    <li>
+                        Introduction to Cloud Computing — Coursera
+                    </li>
+
+                    <li>
+                        Introduction to Software Engineering — Coursera
+                    </li>
+
+                    <li>
+                        [Add other completed certifications]
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <section>
+
+                <div class="section-heading">
+                    <h2>ACTIVITIES</h2>
+                    <div class="line"></div>
+                </div>
+
+                <ul class="simple-list">
+
+                    <li>
+                        Technical activities involving Arduino UNO,
+                        sensors, logic gates, PLC simulation,
+                        EasyEDA and soldering.
+                    </li>
+
+                    <li>
+                        Mini-project presentations and technical demonstrations.
+                    </li>
+
+                    <li>
+                        Smart India Hackathon 2026 project
+                        development and solution research.
+                    </li>
+
+                    <li>
+                        Toastmasters orientation and technical
+                        communication activities.
+                    </li>
+
+                </ul>
+
+            </section>
+
+        </div>
+
+
+        <!-- ================= ACHIEVEMENTS & INTERESTS ================= -->
+
+        <div class="two-column">
+
+            <section>
+
+                <div class="section-heading">
+                    <h2>ACHIEVEMENTS</h2>
+                    <div class="line"></div>
+                </div>
+
+                <ul class="simple-list">
+
+                    <li>
+                        Developed and presented multiple AI/ML
+                        and software-based project concepts.
+                    </li>
+
+                    <li>
+                        Participated in Smart India Hackathon 2026.
+                    </li>
+
+                    <li>
+                        Built practical projects combining AI,
+                        computer vision, web development and databases.
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <section>
+
+                <div class="section-heading">
+                    <h2>INTERESTS</h2>
+                    <div class="line"></div>
+                </div>
+
+                <div class="tags">
+
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Artificial Intelligence</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">Data Science</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">Generative AI</span>
+                    <span class="tag">Software Development</span>
+
+                </div>
+
+                <h3 class="small-title">
+                    SOFT SKILLS
+                </h3>
+
+                <div class="tags">
+
+                    <span class="tag">Problem Solving</span>
+                    <span class="tag">Teamwork</span>
+                    <span class="tag">Communication</span>
+                    <span class="tag">Adaptability</span>
+                    <span class="tag">Presentation</span>
+                    <span class="tag">Continuous Learning</span>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            JEEVITH L &nbsp; • &nbsp;
+            AI & MACHINE LEARNING &nbsp; • &nbsp;
+            RESUME
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
